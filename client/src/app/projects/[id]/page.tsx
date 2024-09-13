@@ -2,23 +2,26 @@
 
 import React, { useState } from "react";
 import ProjectHeader from "@/components/ProjectHeader";
+import BoardView from "@/components/BoardView";
 
-// type Props = {
-//   params: {
-//     id: string;
-//   };
-// };
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-const Page = () => {
-  // const { id } = params;
+const Page = ({ params }: Props) => {
+  const { id } = params;
   const [activeTab, setActiveTab] = useState("Board");
-  // const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
+  const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
 
   return (
     <div>
       {/* Modal New Tasks */}
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
-      {/* {activeTab === "Board" && <Board />} */}
+      {activeTab === "Board" && (
+        <BoardView id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+      )}
     </div>
   );
 };
